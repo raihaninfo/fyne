@@ -18,7 +18,7 @@ func main() {
 		R: 0, G: 255, B: 0, A: 255,
 	}
 
-	textx := canvas.NewText("My text", colorx) //1st color, 2nd color
+	textx := canvas.NewText("amar sonar bangla, u baba............, e baba.........", colorx) //1st color, 2nd color
 
 	w.SetContent(textx)
 
