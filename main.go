@@ -11,12 +11,15 @@ import (
 func main() {
 	a := app.New()
 	w := a.NewWindow("App title")
+
+	// window size
 	w.Resize(fyne.NewSize(400, 200))
 
 	url, err := url.Parse("https://facebook.com")
 	if err != nil {
 		panic(err)
 	}
+	// hyperlink
 	hyperLink := widget.NewHyperlink("visit Me ", url)
 
 	w.SetContent(hyperLink)
