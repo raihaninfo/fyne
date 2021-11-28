@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	"net/url"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -10,24 +10,16 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Adb Desktop App")
-	// w.SetContent(widget.NewLabel("Hello world"))
-	w.Resize(fyne.NewSize(600, 300))
-	// btn := widget.NewButton("Show Devices", func() {
-	// 	commant, err := exec.Command("adb", "devices").Output()
-	// 	if err != nil {
-	// 		panic(err)
-	// 	}
-	// 	fmt.Print(string(commant))
+	w := a.NewWindow("App title")
+	w.Resize(fyne.NewSize(400, 200))
 
-	// })
+	url, err := url.Parse("https://facebook.com")
+	if err != nil {
+		panic(err)
+	}
+	hyperLink := widget.NewHyperlink("visit Me ", url)
 
-	check := widget.NewCheck("Check", func(b bool) {
-		fmt.Println(b)
-	})
-	// w.SetContent()
-
-	// w.SetContent(btn)
-	w.SetContent(check)
+	w.SetContent(hyperLink)
 	w.ShowAndRun()
+
 }
