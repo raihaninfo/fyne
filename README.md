@@ -1,2 +1,1 @@
 # fyne
-desktop app
