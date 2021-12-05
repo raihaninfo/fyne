@@ -1,23 +1,20 @@
 package main
 
 import (
-	"image/color"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/canvas"
+	"fyne.io/fyne/v2/theme"
+	"fyne.io/fyne/v2/widget"
 )
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Liene: canvas line")
-	// window size
-	w.Resize(fyne.NewSize(500, 400))
+	w := a.NewWindow("Icon")
+	w.Resize(fyne.NewSize(500, 300))
 
-	line := canvas.NewLine(color.White)
-	line.StrokeColor = color.NRGBA{R: 255, G: 0, B: 255, A: 255}
-	line.StrokeWidth = 3
-	w.SetContent(line)
+	icon := widget.NewIcon(theme.ConfirmIcon())
+
+	w.SetContent(icon)
 
 	w.ShowAndRun()
 }
