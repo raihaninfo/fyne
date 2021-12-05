@@ -10,15 +10,16 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Titel app")
-	w.Resize(fyne.NewSize(400, 300))
+	w := a.NewWindow("App title")
+	// window size
+	w.Resize(fyne.NewSize(500, 400))
 
-	circle1 := canvas.NewCircle(color.NRGBA{R: 0, G: 0, B: 255, A: 100})
-	circle1.StrokeColor = color.White
-	circle1.StrokeWidth = 3
-	
+	rec := canvas.NewRectangle(color.White)
 
-	w.SetContent(circle1)
+	rec.FillColor = color.NRGBA{R: 0, G: 255, B: 100, A: 244}
+	rec.StrokeColor = color.NRGBA{R: 255, G: 0, B: 100, A: 244}
+	rec.StrokeWidth = 5.0
+	w.SetContent(rec)
 
 	w.ShowAndRun()
 }
