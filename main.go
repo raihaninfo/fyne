@@ -1,34 +1,24 @@
 package main
 
 import (
-	"fmt"
-	"os/exec"
+	"image/color"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/widget"
+	"fyne.io/fyne/v2/canvas"
 )
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Adb Desktop App")
-	// w.SetContent(widget.NewLabel("Hello world"))
-	w.Resize(fyne.NewSize(600, 300))
-	btn := widget.NewButton("Show Devices", func() {
-		commant, err := exec.Command("adb", "devices").Output()
-		if err != nil {
-			panic(err)
-		}
-		fmt.Print(string(commant))
+	w := a.NewWindow("Titel app")
+	w.Resize(fyne.NewSize(400, 300))
 
-	})
+	circle1 := canvas.NewCircle(color.NRGBA{R: 0, G: 0, B: 255, A: 100})
+	circle1.StrokeColor = color.White
+	circle1.StrokeWidth = 3
+	
 
-	// check := widget.NewCheck("Check", func(b bool) {
-	// 	fmt.Println(b)
-	// })
-	// w.SetContent()
+	w.SetContent(circle1)
 
-	// w.SetContent(btn)
-	w.SetContent(btn)
 	w.ShowAndRun()
 }
