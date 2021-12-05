@@ -10,16 +10,14 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("App title")
+	w := a.NewWindow("Liene: canvas line")
 	// window size
 	w.Resize(fyne.NewSize(500, 400))
 
-	rec := canvas.NewRectangle(color.White)
-
-	rec.FillColor = color.NRGBA{R: 0, G: 255, B: 100, A: 244}
-	rec.StrokeColor = color.NRGBA{R: 255, G: 0, B: 100, A: 244}
-	rec.StrokeWidth = 5.0
-	w.SetContent(rec)
+	line := canvas.NewLine(color.White)
+	line.StrokeColor = color.NRGBA{R: 255, G: 0, B: 255, A: 255}
+	line.StrokeWidth = 3
+	w.SetContent(line)
 
 	w.ShowAndRun()
 }
