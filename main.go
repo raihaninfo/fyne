@@ -2,33 +2,40 @@ package main
 
 import (
 	"fmt"
-	"os/exec"
+	"math/rand"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/canvas"
+	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 )
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Adb Desktop App")
-	// w.SetContent(widget.NewLabel("Hello world"))
-	w.Resize(fyne.NewSize(600, 300))
-	btn := widget.NewButton("Show Devices", func() {
-		commant, err := exec.Command("adb", "devices").Output()
-		if err != nil {
-			panic(err)
-		}
-		fmt.Print(string(commant))
+	w := a.NewWindow("Dicee Game")
+	w.Resize(fyne.NewSize(400, 400))
+
+	// image
+	img := canvas.NewImageFromFile("images/dice6.png")
+	img.FillMode = canvas.ImageFillOriginal
+
+	// button
+	btn1 := widget.NewButton("Play", func() {
+		ran := rand.Intn(6) + 1
+		img.File = fmt.Sprintf("images/dice%d.png", ran)
+		img.Refresh()
 
 	})
 
-	// check := widget.NewCheck("Check", func(b bool) {
-	// 	fmt.Println(b)
-	// })
-	// w.SetContent()
+	w.SetContent(
+		// newVbox
+		container.NewVBox(
+			img,
+			btn1,
+		),
+	)
 
-	// w.SetContent(btn)
-	w.SetContent(btn)
+	// show and run
 	w.ShowAndRun()
 }
