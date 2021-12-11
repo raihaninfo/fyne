@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"image/color"
 	"math/rand"
 
 	"fyne.io/fyne/v2"
@@ -14,28 +13,29 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("Random Number Generator")
-
-	// window size
+	w := a.NewWindow("Dicee Game")
 	w.Resize(fyne.NewSize(400, 400))
 
-	label1 := canvas.NewText("Rand Num Gen", color.White)
-	label1.TextSize = 40
+	// image
+	img := canvas.NewImageFromFile("images/dice6.png")
+	img.FillMode = canvas.ImageFillOriginal
 
-	btn1 := widget.NewButton("Generate", func() {
-		// logic
-		rand := rand.Intn(100)
-		label1.Text = fmt.Sprint(rand)
-		label1.Refresh()
+	// button
+	btn1 := widget.NewButton("Play", func() {
+		ran := rand.Intn(6) + 1
+		img.File = fmt.Sprintf("images/dice%d.png", ran)
+		img.Refresh()
+
 	})
 
-	// show
 	w.SetContent(
+		// newVbox
 		container.NewVBox(
-			label1,
+			img,
 			btn1,
 		),
 	)
 
+	// show and run
 	w.ShowAndRun()
 }
