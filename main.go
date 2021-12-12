@@ -25,9 +25,9 @@ func main() {
 		ran := rand.Intn(6) + 1
 		img.File = fmt.Sprintf("images/dice%d.png", ran)
 		img.Refresh()
-
 	})
 
+	// content
 	w.SetContent(
 		// newVbox
 		container.NewVBox(
