@@ -22,8 +22,8 @@ func main() {
 
 	// button
 	btn1 := widget.NewButton("Play", func() {
-		ran := rand.Intn(6) + 1
-		img.File = fmt.Sprintf("images/dice%d.png", ran)
+		random := rand.Intn(6) + 1
+		img.File = fmt.Sprintf("images/dice%d.png", random)
 		img.Refresh()
 	})
 
