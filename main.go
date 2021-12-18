@@ -2,6 +2,7 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"io/ioutil"
 	"net/http"
 
@@ -80,17 +81,21 @@ func main() {
 	w.ShowAndRun()
 }
 
+// Error Handling Function
+func ErrorHandling(err error) {
+	if err != nil {
+		fmt.Println(err)
+	}
+}
+
+// Get isp full information
 func myIp() (string, string, string, string, string) {
 	req, err := http.Get("http://ip-api.com/json")
-	if err != nil {
-		panic(err)
-	}
+	ErrorHandling(err)
 
 	defer req.Body.Close()
 	body, err := ioutil.ReadAll(req.Body)
-	if err != nil {
-		panic(err)
-	}
+	ErrorHandling(err)
 
 	json.Unmarshal(body, &ip)
 	return ip.Status, ip.Country, ip.Timezone, ip.Isp, ip.Query
