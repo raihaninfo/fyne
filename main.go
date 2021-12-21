@@ -7,6 +7,8 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/theme"
+	"fyne.io/fyne/v2/widget"
 )
 
 func main() {
@@ -16,11 +18,21 @@ func main() {
 
 	label1 := canvas.NewText("Text 1", color.White)
 	label2 := canvas.NewText("Text 2", color.White)
+	w1 := widget.NewIcon(theme.CancelIcon())
+	btn1 := widget.NewButton("Play", func() {
+
+	})
 
 	w.SetContent(
 		container.NewHSplit(
-			label1,
-			label2,
+			container.NewVSplit(
+				label1,
+				w1,
+			),
+			container.NewVBox(
+				label2,
+				btn1,
+			),
 		),
 	)
 
