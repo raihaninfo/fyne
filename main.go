@@ -1,11 +1,8 @@
 package main
 
 import (
-	"image/color"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
-	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
@@ -13,26 +10,30 @@ import (
 
 func main() {
 	a := app.New()
-	w := a.NewWindow("New H Split")
+	// light
+	// a.Settings().SetTheme(theme.LightTheme())
+	a.Settings().SetTheme(theme.DarkTheme())
+	w := a.NewWindow("Dark and Light theme")
+
 	w.Resize(fyne.NewSize(500, 400))
 
-	label1 := canvas.NewText("Text 1", color.White)
-	label2 := canvas.NewText("Text 2", color.White)
-	w1 := widget.NewIcon(theme.CancelIcon())
-	btn1 := widget.NewButton("Play", func() {
-
+	label1 := widget.NewLabel("Fyne Themes")
+	btn1 := widget.NewButton("Light", func() {
+		a.Settings().SetTheme(theme.LightTheme())
+	})
+	btn2 := widget.NewButton("Dark", func() {
+		a.Settings().SetTheme(theme.DarkTheme())
+	})
+	btn3 := widget.NewButton("Exit", func() {
+		a.Quit()
 	})
 
 	w.SetContent(
-		container.NewHSplit(
-			container.NewVSplit(
-				label1,
-				w1,
-			),
-			container.NewVBox(
-				label2,
-				btn1,
-			),
+		container.NewVBox(
+			label1,
+			btn1,
+			btn2,
+			btn3,
 		),
 	)
 
