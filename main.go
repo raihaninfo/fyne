@@ -8,6 +8,7 @@ import (
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
+	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/widget"
 )
@@ -26,6 +27,9 @@ func main() {
 	a := app.New()
 	w := a.NewWindow("What is my ip")
 	w.Resize(fyne.NewSize(600, 500))
+
+	img := canvas.NewImageFromFile("images/logo.jpg")
+	img.FillMode = canvas.ImageFillOriginal
 
 	status := widget.NewLabel("Status")
 	statusValue := widget.NewLabel("..........")
@@ -75,6 +79,9 @@ func main() {
 					ipValue,
 				),
 				btn,
+			),
+			container.NewCenter(
+				img,
 			),
 		),
 	)
