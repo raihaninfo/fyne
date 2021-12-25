@@ -42,9 +42,12 @@ func main() {
 	// 	Label: "File",
 	// 	Items: raihan,
 	// }
+	newMenu1 := fyne.NewMenu("File")
+	newMenu2 := fyne.NewMenu("Edit")
+	newMenu3 := fyne.NewMenu("View")
 	newMenu := fyne.NewMenu("Theme", menuItem1, menuItem2)
 
-	menu := fyne.NewMainMenu(newMenu)
+	menu := fyne.NewMainMenu(newMenu1, newMenu2, newMenu3, newMenu)
 	w.SetMainMenu(menu)
 
 	img := canvas.NewImageFromFile("images/logo.jpg")
