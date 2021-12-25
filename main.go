@@ -10,6 +10,7 @@ import (
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/canvas"
 	"fyne.io/fyne/v2/container"
+	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -27,6 +28,24 @@ func main() {
 	a := app.New()
 	w := a.NewWindow("What is my ip")
 	w.Resize(fyne.NewSize(600, 500))
+
+	menuItem1 := fyne.NewMenuItem("Light", func() {
+		Light := theme.LightTheme()
+		a.Settings().SetTheme(Light)
+	})
+	menuItem2 := fyne.NewMenuItem("Dark", func() {
+		Dark := theme.DarkTheme()
+		a.Settings().SetTheme(Dark)
+	})
+
+	// menuItem := &fyne.Menu{
+	// 	Label: "File",
+	// 	Items: raihan,
+	// }
+	newMenu := fyne.NewMenu("Theme", menuItem1, menuItem2)
+
+	menu := fyne.NewMainMenu(newMenu)
+	w.SetMainMenu(menu)
 
 	img := canvas.NewImageFromFile("images/logo.jpg")
 	img.FillMode = canvas.ImageFillOriginal
