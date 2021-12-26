@@ -38,10 +38,6 @@ func main() {
 		a.Settings().SetTheme(Dark)
 	})
 
-	// menuItem := &fyne.Menu{
-	// 	Label: "File",
-	// 	Items: raihan,
-	// }
 	newMenu1 := fyne.NewMenu("File")
 	newMenu2 := fyne.NewMenu("Edit")
 	newMenu3 := fyne.NewMenu("View")
