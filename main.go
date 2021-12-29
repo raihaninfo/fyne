@@ -59,6 +59,7 @@ func main() {
 	ispValue := widget.NewLabel("..........")
 	ip := widget.NewLabel("Internet ip")
 	ipValue := widget.NewLabel("..........")
+// 	run button
 	btn := widget.NewButton("Run", func() {
 		status, cuntry, time, isp, ip := myIp()
 		statusValue.Text = status
