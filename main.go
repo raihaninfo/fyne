@@ -40,7 +40,16 @@ func main() {
 	entry_address.Move(fyne.NewPos(50, 150))
 
 	// new field Email
+	entry_message := widget.NewEntry()
+	entry_message.SetPlaceHolder("Enter Your Message")
+	entry_message.MultiLine = true
+	entry_message.Resize(fyne.NewSize(300, 150))
+	entry_message.Move(fyne.NewPos(50, 200))
 
+	// submit btn
+	submit_btn := widget.NewButton("Submit", nil)
+	submit_btn.Resize(fyne.NewSize(80, 30))
+	submit_btn.Move(fyne.NewPos(50, 355))
 
 	w.SetContent(
 		container.NewWithoutLayout(
